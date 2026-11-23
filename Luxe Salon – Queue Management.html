@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Luxe Salon – Live Queue</title>
+<link href="https://fonts.googleapis.com/css2?family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#fff;--ink:#141210;--mute:#6b6762;--line:#141210;--soft:#e7e3dd;--clay:#8a4f3a;--gold:#b48a45;--ok:#3f7a52;--warn:#b0452f;--inv:#fff;--sans:'Jost','Helvetica Neue',Arial,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#121010;--ink:#f1ece4;--mute:#a49d93;--line:#f1ece4;--soft:#2a2623;--inv:#121010;--gold:#d2a85d;--ok:#6fc08a;--warn:#e07b63}}
+:root[data-theme="dark"]{--bg:#121010;--ink:#f1ece4;--mute:#a49d93;--line:#f1ece4;--soft:#2a2623;--inv:#121010;--gold:#d2a85d;--ok:#6fc08a;--warn:#e07b63}
+*,*::before,*::after{box-sizing:inherit}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+body{margin:0;background:var(--bg);color:var(--ink);font:300 16px/1.6 var(--sans)}
+button,input,select{font:inherit;color:inherit}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+.w{max-width:1120px;margin:0 auto;padding:0 20px}.n{max-width:760px;margin:0 auto;padding:0 20px}
+.cap{font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500}
+h1,h2,h3{font-weight:400;text-transform:uppercase;letter-spacing:.04em;margin:0}
+/* nav */
+nav{text-align:center;padding:18px 20px 12px}
+.logo{font-size:26px;letter-spacing:.32em;font-weight:400}
+.menu{display:flex;justify-content:center;margin-top:12px;flex-wrap:wrap}
+.menu a{padding:0 22px;border-left:1px solid var(--soft);font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--mute)}
+.menu a:first-child{border-left:0}.menu a[aria-current=page]{color:var(--ink);text-decoration:underline;text-underline-offset:6px}
+/* hero */
+.hero{position:relative;margin:12px auto 0;max-width:1120px;height:min(430px,62vw);min-height:300px;color:#fff;overflow:hidden;
+background:radial-gradient(120% 90% at 70% 40%,#7d7d77,#4d4d49 70%),#555}
+.hero::before{content:"LUXE SALON";position:absolute;left:34%;top:44%;font-size:clamp(40px,8vw,92px);letter-spacing:.12em;color:rgba(255,255,255,.07);text-shadow:-1px -1px 0 rgba(255,255,255,.12),2px 2px 3px rgba(0,0,0,.5);white-space:nowrap}
+.hero .t{position:absolute;left:5%;top:14%;max-width:90%}
+.hero h1{font-size:clamp(22px,3.4vw,34px);line-height:1.15}
+.hero p{margin:8px 0 22px;font-weight:300}
+.btn{display:inline-block;border:1px solid currentColor;background:none;padding:12px 26px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;font-weight:500;cursor:pointer}
+.btn.fill{background:var(--ink);color:var(--inv);border-color:var(--ink)}.hero .btn{background:#fff;color:#141210;border-color:#fff}
+.btn[disabled]{opacity:.35;cursor:not-allowed}.btn.sm{padding:7px 14px;font-size:10px}
+/* intro + stats */
+.intro{display:grid;grid-template-columns:1fr 1fr;gap:40px;padding:56px 0 40px;max-width:760px;margin:0 auto}
+.intro h2{font-size:20px;line-height:1.3;margin-bottom:14px}.intro p{font-size:13px;color:var(--mute);margin:0 0 12px}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:18px 26px;align-content:start}
+.stats div{text-align:center;border-top:1px solid var(--line);padding-top:8px}
+.stats b{display:block;font-size:34px;font-weight:300;line-height:1.2}
+/* tiles */
+.tiles{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;max-width:760px;margin:0 auto;padding:0 20px}
+.tile{aspect-ratio:3/4;position:relative}
+.tile i{position:absolute;left:0;bottom:-22px;font-style:normal;font-size:10px;color:var(--mute)}
+.p1{background:linear-gradient(120deg,#f3ece4 0 38%,#7b4b33 38%)}
+.p2{background:linear-gradient(160deg,#4a2a1e,#2a1710 70%)}
+.p3{background:linear-gradient(180deg,#8c5a43,#5a3322)}
+.p4{background:radial-gradient(40% 14% at 50% 22%,#fff 0 90%,transparent 92%),linear-gradient(#7a4a35,#4d2a1d)}
+.ornament{display:flex;align-items:center;gap:14px;max-width:760px;margin:70px auto 30px;padding:0 20px}
+.ornament hr{flex:1;border:0;border-top:1px solid var(--line);margin:0}.ornament span{font-size:22px;color:var(--mute)}
+.sec{text-align:center;font-size:18px;margin-bottom:26px}
+.row{display:flex;justify-content:center;flex-wrap:wrap;max-width:760px;margin:0 auto 14px;padding:0 20px}
+.row span{padding:8px 24px;border-left:1px solid var(--soft);font-size:20px;letter-spacing:.06em}.row span:first-child{border-left:0}
+.tick{border-top:1px solid var(--line);border-bottom:1px solid var(--line);margin:40px 0;overflow:hidden;white-space:nowrap;padding:6px 0}
+.tick div{display:inline-block;animation:mv 40s linear infinite;font-size:10px;letter-spacing:.2em;text-transform:uppercase;font-weight:500;color:var(--mute)}
+.tick span{margin-right:44px}
+@keyframes mv{to{transform:translateX(-50%)}}
+.cards{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-width:760px;margin:0 auto 70px;padding:0 20px}
+.cd{aspect-ratio:3/4;position:relative;display:block}
+.cd:nth-child(1){background:linear-gradient(135deg,#6a5a4a,#2a2420)}.cd:nth-child(2){background:linear-gradient(135deg,#ddd6cc,#9a948a)}.cd:nth-child(3){background:linear-gradient(135deg,#c98a7c,#8f5648)}
+.cd div{position:absolute;right:0;bottom:0;width:62%;height:68%;background:#fff;color:#141210;padding:12px 10px;text-align:center;font-size:11px;line-height:1.5;display:flex;flex-direction:column;justify-content:center;gap:6px}
+.cd b{font-size:12px;letter-spacing:.14em;font-weight:500;text-transform:uppercase}.cd u{font-size:10px;letter-spacing:.16em;text-transform:uppercase}
+/* inner pages */
+.page{padding:40px 0 70px}.page h1{font-size:24px;text-align:center;margin-bottom:6px}.lead{text-align:center;color:var(--mute);font-size:14px;margin:0 0 34px}
+.two{display:grid;grid-template-columns:340px 1fr;gap:40px;align-items:start}
+label{display:block;font-size:11px;letter-spacing:.18em;text-transform:uppercase;color:var(--mute);margin:16px 0 4px}
+input,select{width:100%;padding:11px 0;background:none;border:0;border-bottom:1px solid var(--line);border-radius:0}
+select option{color:#141210}
+.err{color:var(--warn);font-size:13px;min-height:20px;margin-top:8px}.est{font-size:13px;color:var(--mute);margin-top:14px}.est b{color:var(--ink);font-weight:500}
+.ticket{margin-top:26px;border:1px solid var(--line);padding:18px;text-align:center}.ticket .tk{font-size:52px;font-weight:300;line-height:1.1}.ticket p{margin:6px 0 0;font-size:13px;color:var(--mute)}
+.q{list-style:none;margin:0;padding:0}.q li{display:grid;grid-template-columns:64px 1fr auto;gap:12px;align-items:center;padding:14px 0;border-top:1px solid var(--soft)}
+.q .tk{font-size:22px}.q .sub{font-size:12px;color:var(--mute)}.pill{font-size:10px;letter-spacing:.14em;text-transform:uppercase;padding:2px 8px;border:1px solid var(--soft);margin-left:6px}.pill.s{background:var(--ok);color:#fff;border-color:var(--ok)}
+.acts{display:flex;gap:6px;flex-wrap:wrap}.empty{color:var(--mute);padding:16px 0}
+.svc{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:0 40px}.svc div{display:flex;justify-content:space-between;padding:14px 0;border-top:1px solid var(--soft)}.svc span{color:var(--mute)}
+.sg{display:grid;grid-template-columns:repeat(4,1fr);gap:18px;margin-bottom:30px}.sg div{border-top:1px solid var(--line);text-align:center;padding-top:8px}.sg b{display:block;font-size:34px;font-weight:300}
+.bar{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap;margin-bottom:10px}
+footer{border-top:1px solid var(--line);padding:34px 20px;text-align:center;font-size:12px;color:var(--mute)}footer .menu{margin-bottom:14px}
+[hidden]{display:none!important}
+@media (max-width:760px){.intro,.two{grid-template-columns:1fr}.tiles{grid-template-columns:1fr 1fr}.cards{grid-template-columns:1fr}.cd{aspect-ratio:4/3}.sg{grid-template-columns:1fr 1fr}.q li{grid-template-columns:54px 1fr}.q .acts{grid-column:1/-1}.menu a{padding:4px 12px}.hero::before{left:10%}}
+@media (prefers-reduced-motion:reduce){.tick div{animation:none}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<nav>
+  <a href="#home" class="logo">LUXE SALON</a>
+  <div class="menu" id="menu"><a href="#home" data-p="home">Home</a><a href="#queue" data-p="queue">Join queue</a><a href="#services" data-p="services">Services</a><a href="#staff" data-p="staff">Staff</a></div>
+</nav>
+
+<!-- HOME -->
+<section data-page="home">
+  <div class="hero"><div class="t">
+    <h1>A queue that respects<br>your time</h1><p>Sector 12 · Sānand, Gujarat</p><a class="btn" href="#queue">Join the queue</a>
+  </div></div>
+  <div class="intro">
+    <div><h2>Good hair,<br>good mood</h2><p>Pick your service from your phone, get a token and watch your turn arrive live. No standing at the door, no guessing how long it will take.</p><p>Our front desk updates the queue the moment a chair is free, so the wait time you see is the wait time you get.</p></div>
+    <div class="stats"><div><span class="cap">Waiting</span><b id="hW">0</b></div><div><span class="cap">Now serving</span><b id="hN">–</b></div><div><span class="cap">Wait for new guests</span><b id="hE">0</b></div><div><span class="cap">Chairs</span><b>3</b></div></div>
+  </div>
+  <div class="tiles"><div class="tile p1"><i>The reception</i></div><div class="tile p2"><i>Waiting lounge</i></div><div class="tile p3"><i>Front desk</i></div><div class="tile p4"><i>Styling floor</i></div></div>
+  <div class="ornament"><hr><span>❖</span><hr></div>
+  <h2 class="sec">How it works</h2>
+  <div class="row"><span>Choose</span><span>Get a token</span><span>Track live</span><span>Walk in</span></div>
+  <div class="tick" aria-hidden="true"><div id="tick"></div></div>
+  <h2 class="sec">Our branches</h2>
+  <div class="cards">
+    <a class="cd" href="#queue"><div><b>Sānand</b>Hair · Skin · Barber<u id="b1">Wait</u></div></a>
+    <a class="cd" href="#queue"><div><b>Satellite</b>Hair · Makeup<u id="b2">Wait</u></div></a>
+    <a class="cd" href="#queue"><div><b>Sindhu Bhavan</b>Lash · Skin · Spa<u id="b3">Wait</u></div></a>
+  </div>
+</section>
+
+<!-- QUEUE -->
+<section data-page="queue" hidden><div class="w page">
+  <h1>Join the queue</h1><p class="lead">Get a token and follow your turn live.</p>
+  <div class="two">
+    <div>
+      <form id="f" novalidate>
+        <label for="name">Your name</label><input id="name" autocomplete="name">
+        <label for="phone">Mobile number</label><input id="phone" inputmode="numeric" maxlength="10" autocomplete="tel">
+        <label for="svc">Service</label><select id="svc"></select>
+        <label for="sty">Stylist</label><select id="sty"></select>
+        <div class="est" id="estNote"></div><div class="err" id="err" role="alert"></div>
+        <button class="btn fill" type="submit" style="width:100%;margin-top:10px">Get my token</button>
+      </form>
+      <div id="mine" class="ticket" hidden></div>
+    </div>
+    <div><h3 class="cap" style="margin-bottom:8px">Live queue</h3><ul class="q" id="pubQ"></ul></div>
+  </div>
+</div></section>
+
+<!-- SERVICES -->
+<section data-page="services" hidden><div class="n page">
+  <h1>Services</h1><p class="lead">Time and price for each service. Prices are samples.</p><div class="svc" id="svcList"></div>
+  <p style="text-align:center;margin-top:34px"><a class="btn fill" href="#queue">Join the queue</a></p>
+</div></section>
+
+<!-- STAFF -->
+<section data-page="staff" hidden><div class="w page">
+  <h1>Queue control</h1><p class="lead">Front desk and stylists only.</p>
+  <div class="sg"><div><span class="cap">Waiting</span><b id="sW">0</b></div><div><span class="cap">In chair</span><b id="sS">0</b></div><div><span class="cap">Served today</span><b id="sD">0</b></div><div><span class="cap">Wait for new guests</span><b id="sA">0</b></div></div>
+  <div class="bar"><span class="cap">Today’s queue</span><div class="acts"><button class="btn fill sm" id="callNext">Call next guest</button><button class="btn sm" id="addWalk">Add walk-in</button></div></div>
+  <ul class="q" id="staffQ"></ul>
+</div></section>
+
+<footer>
+  <div class="menu"><a href="#home">Home</a><a href="#queue">Join queue</a><a href="#services">Services</a><a href="#staff">Staff</a></div>
+  © 2026 Luxe Salon · Template: replace the colour blocks with your own salon photos
+</footer>
+
+<script>
+const SERVICES=[{n:'Haircut',m:30,p:500},{n:'Beard trim',m:15,p:200},{n:'Hair spa',m:45,p:900},{n:'Facial',m:45,p:1200},{n:'Hair colour',m:90,p:2500},{n:'Lash lift',m:60,p:1800}];
+const STYLISTS=['Any available','Aarav','Meera','Kabir'],CHAIRS=3;
+let Q=[],seq=100,done=0,mineId=null;
+const $=id=>document.getElementById(id);
+const esc=s=>String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const dur=x=>SERVICES.find(s=>s.n===x.svc).m;
+const add=(name,phone,svc,sty,status)=>{const t={id:Date.now()+Math.random(),tok:'A'+(++seq),name,phone,svc,sty,status:status||'waiting'};Q.push(t);return t};
+const wait=()=>Q.filter(x=>x.status==='waiting'),serv=()=>Q.filter(x=>x.status==='serving');
+function est(x){const i=x?Q.indexOf(x):Q.length;const sum=serv().concat(wait()).filter(y=>Q.indexOf(y)<i).reduce((a,y)=>a+dur(y),0);return Math.ceil(sum/CHAIRS/5)*5}
+const save=()=>{try{localStorage.setItem('luxe2',JSON.stringify({Q,seq,done,mineId}))}catch(e){}};
+function load(){try{const d=JSON.parse(localStorage.getItem('luxe2'));if(d&&d.Q){Q=d.Q;seq=d.seq;done=d.done;mineId=d.mineId;return 1}}catch(e){}}
+function seed(){add('Riya S.','9800000001','Haircut','Any available','serving');add('Karan M.','9800000002','Hair spa','Meera','serving');add('Neha P.','9800000003','Facial','Any available');add('Imran K.','9800000004','Beard trim','Kabir');add('Pooja D.','9800000005','Hair colour','Aarav')}
+function row(x,staff){const w=wait(),i=w.indexOf(x);
+  const lab=x.status==='serving'?'<span class="pill s">In chair</span>':'<span class="pill">'+(i+1)+' in line · ~'+est(x)+' min</span>';
+  let a='<span></span>';
+  if(staff)a='<div class="acts">'+(x.status==='waiting'?'<button class="btn sm" data-a="start" data-i="'+x.id+'">Start</button><button class="btn sm" data-a="skip" data-i="'+x.id+'">No-show</button>':'<button class="btn fill sm" data-a="done" data-i="'+x.id+'">Mark done</button>')+'</div>';
+  return '<li><span class="tk">'+x.tok+'</span><div>'+(staff?esc(x.name)+' · '+esc(x.phone):esc(x.name.split(' ')[0]))+'<div class="sub">'+esc(x.svc)+' · '+esc(x.sty)+lab+'</div></div>'+a+'</li>'}
+function render(){
+  const w=wait(),s=serv(),e=est(null),live=Q.filter(x=>x.status==='waiting'||x.status==='serving');
+  const now=s.length?s.map(x=>x.tok).join(', '):'–';
+  $('hW').textContent=w.length;$('hN').textContent=now;$('hE').textContent=e+' min';
+  $('b1').textContent='Wait '+e+' min';$('b2').textContent='Wait '+(e+10)+' min';$('b3').textContent='Wait '+Math.max(0,e-5)+' min';
+  const t='<span>Now serving '+now+'</span><span>'+w.length+' waiting</span><span>Wait about '+e+' minutes</span><span>Since 2026</span>';
+  $('tick').innerHTML=t.repeat(8);
+  $('estNote').innerHTML='Estimated wait if you join now: <b>'+e+' min</b>';
+  $('pubQ').innerHTML=live.length?live.map(x=>row(x,0)).join(''):'<li class="empty">No one is waiting. Walk in now.</li>';
+  $('staffQ').innerHTML=live.length?live.map(x=>row(x,1)).join(''):'<li class="empty">Queue is empty. Add a walk-in to begin.</li>';
+  $('sW').textContent=w.length;$('sS').textContent=s.length;$('sD').textContent=done;$('sA').textContent=e+' min';
+  $('callNext').disabled=!w.length||s.length>=CHAIRS;
+  const m=Q.find(x=>x.id===mineId),b=$('mine');
+  if(m&&(m.status==='waiting'||m.status==='serving')){b.hidden=false;
+    b.innerHTML='<span class="cap">Your token</span><div class="tk">'+m.tok+'</div><p>'+(m.status==='serving'?'It’s your turn. Please go to the chair.':w.indexOf(m)===0?'You’re next. Please arrive now.':w.indexOf(m)+' guest(s) ahead · about '+est(m)+' min')+'</p><button class="btn sm" id="leave" style="margin-top:12px">Leave queue</button>';
+    $('leave').onclick=()=>{m.status='noshow';mineId=null;render()}}
+  else if(m){b.hidden=false;b.innerHTML='<span class="cap">Token '+m.tok+'</span><p>'+(m.status==='done'?'All done. Thank you for visiting.':'This token is closed.')+'</p>'}
+  else b.hidden=true;
+  save()}
+$('svc').innerHTML=SERVICES.map(s=>'<option>'+s.n+'</option>').join('');
+$('sty').innerHTML=STYLISTS.map(s=>'<option>'+s+'</option>').join('');
+$('svcList').innerHTML=SERVICES.map(s=>'<div>'+s.n+'<span>'+s.m+' min · ₹'+s.p+'</span></div>').join('');
+$('f').onsubmit=ev=>{ev.preventDefault();const n=$('name').value.trim(),p=$('phone').value.trim();
+  if(n.length<2){$('err').textContent='Enter your name.';return}
+  if(!/^\d{10}$/.test(p)){$('err').textContent='Enter a 10-digit mobile number.';return}
+  if(Q.some(x=>x.phone===p&&(x.status==='waiting'||x.status==='serving'))){$('err').textContent='This number already has an active token.';return}
+  $('err').textContent='';mineId=add(n,p,$('svc').value,$('sty').value).id;$('f').reset();render()};
+$('callNext').onclick=()=>{const x=wait()[0];if(x){x.status='serving';render()}};
+$('addWalk').onclick=()=>{const n=prompt('Guest name');if(!n)return;const p=prompt('Mobile number (10 digits)')||'0000000000';const sv=prompt('Service: '+SERVICES.map(s=>s.n).join(', '),'Haircut');const ok=SERVICES.find(s=>s.n.toLowerCase()===(sv||'').toLowerCase());add(n,p,ok?ok.n:'Haircut','Any available');render()};
+$('staffQ').onclick=ev=>{const b=ev.target.closest('button');if(!b)return;const x=Q.find(y=>String(y.id)===b.dataset.i);if(!x)return;
+  if(b.dataset.a==='start'&&serv().length<CHAIRS)x.status='serving';
+  if(b.dataset.a==='skip')x.status='noshow';
+  if(b.dataset.a==='done'){x.status='done';done++}render()};
+function route(){const p=(location.hash||'#home').slice(1);const pg=['home','queue','services','staff'].includes(p)?p:'home';
+  document.querySelectorAll('[data-page]').forEach(s=>s.hidden=s.dataset.page!==pg);
+  document.querySelectorAll('#menu a').forEach(a=>a.dataset.p===pg?a.setAttribute('aria-current','page'):a.removeAttribute('aria-current'));window.scrollTo(0,0)}
+addEventListener('hashchange',route);
+if(!load())seed();render();route();
+</script>
+</body>
+</html>

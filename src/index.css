@@ -1,0 +1,237 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  /* VÉLORA Strict Colour Palette */
+  --bg-blush: #F8E9E7;
+  --bg-secondary: #E8C6C2;
+  --color-primary: #C58B83;
+  --color-dark-rose: #9B6B64;
+  --bg-card: #FFF9F5;
+  --text-ink: #3D2D2A;
+  --text-muted: #8C7471;
+  --border-color: #E8C6C2;
+  --border-delicate: rgba(232, 198, 194, 0.55);
+  
+  /* Legacy token mapping */
+  --canvas: #F8E9E7;
+  --surface: #FFF9F5;
+  --ink: #3D2D2A;
+  --muted: #8C7471;
+  --stone-line: #E8C6C2;
+  --gold: #C58B83;
+  --clay: #9B6B64;
+  --sage: #059669;
+  --rust: #DC2626;
+}
+
+.dark {
+  --bg-blush: #231816;
+  --bg-secondary: #3D2825;
+  --color-primary: #DCAFA9;
+  --color-dark-rose: #E8C6C2;
+  --bg-card: #2D201E;
+  --text-ink: #FFF9F5;
+  --text-muted: #DCAFA9;
+  --border-color: #4A3430;
+  --border-delicate: rgba(74, 52, 48, 0.6);
+
+  --canvas: #231816;
+  --surface: #2D201E;
+  --ink: #FFF9F5;
+  --muted: #DCAFA9;
+  --stone-line: #4A3430;
+  --gold: #DCAFA9;
+  --clay: #C58B83;
+  --sage: #34D399;
+  --rust: #F87171;
+}
+
+@layer base {
+  * {
+    border-color: var(--border-delicate);
+    box-sizing: border-box;
+  }
+  
+  html {
+    scroll-behavior: smooth;
+    font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+  }
+
+  body {
+    background-color: var(--bg-blush);
+    color: var(--text-ink);
+    font-family: 'DM Sans', 'Jost', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    min-height: 100vh;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: 'Playfair Display', Georgia, serif;
+    letter-spacing: 0.02em;
+    font-weight: 400;
+    color: var(--color-dark-rose);
+  }
+}
+
+/* Reusable VÉLORA Luxury Components */
+.velora-card {
+  background-color: var(--bg-card);
+  border: 1px solid var(--border-delicate);
+  border-radius: 1rem; /* 16px soft curve */
+  box-shadow: 0 4px 20px -2px rgba(155, 107, 100, 0.06), 0 2px 6px -2px rgba(155, 107, 100, 0.03);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.velora-card:hover {
+  box-shadow: 0 10px 25px -3px rgba(155, 107, 100, 0.12), 0 4px 10px -2px rgba(155, 107, 100, 0.06);
+  border-color: var(--bg-secondary);
+}
+
+.btn-velora-primary,
+.btn-editorial-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-primary);
+  color: #FFF9F5;
+  border: 1px solid var(--color-primary);
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px; /* pill styling matching reference */
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  box-shadow: 0 4px 14px rgba(197, 139, 131, 0.3);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-velora-primary:hover:not(:disabled),
+.btn-editorial-primary:hover:not(:disabled) {
+  background-color: var(--color-dark-rose);
+  border-color: var(--color-dark-rose);
+  box-shadow: 0 6px 18px rgba(155, 107, 100, 0.4);
+  transform: translateY(-1px);
+}
+
+.btn-velora-primary:active:not(:disabled),
+.btn-editorial-primary:active:not(:disabled) {
+  transform: translateY(0);
+}
+
+.btn-velora-outline,
+.btn-editorial-outline {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  color: var(--color-dark-rose);
+  border: 1px solid var(--bg-secondary);
+  padding: 0.75rem 1.6rem;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.btn-velora-outline:hover:not(:disabled),
+.btn-editorial-outline:hover:not(:disabled) {
+  border-color: var(--color-primary);
+  background-color: rgba(232, 198, 194, 0.2);
+  color: var(--color-dark-rose);
+}
+
+.btn-velora-gold,
+.btn-editorial-gold {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  background-color: var(--color-primary);
+  color: #FFF9F5;
+  border: 1px solid var(--color-primary);
+  padding: 0.75rem 1.5rem;
+  border-radius: 9999px;
+  font-size: 12px;
+  font-weight: 500;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+}
+
+.label-caps {
+  font-size: 11px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--color-dark-rose);
+}
+
+.label-caps-sm {
+  font-size: 9.5px;
+  line-height: 1.2;
+  font-weight: 600;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+/* Input Fields */
+.velora-input {
+  width: 100%;
+  background-color: #FFF9F5;
+  border: 1px solid var(--bg-secondary);
+  border-radius: 0.75rem; /* 12px */
+  padding-top: 0.65rem;
+  padding-bottom: 0.65rem;
+  padding-left: 1rem;
+  padding-right: 1rem;
+  font-size: 0.875rem;
+  color: var(--text-ink);
+  outline: none;
+  transition: all 0.2s ease;
+}
+
+.velora-input:focus {
+  border-color: var(--color-primary);
+  box-shadow: 0 0 0 3px rgba(197, 139, 131, 0.18);
+}
+
+/* Subtle Scroll Animations */
+@keyframes scrollDownFloat {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(6px); }
+}
+
+.animate-scroll-indicator {
+  animation: scrollDownFloat 2s ease-in-out infinite;
+}
+
+/* Luxury Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--bg-blush);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--bg-secondary);
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--color-primary);
+}
