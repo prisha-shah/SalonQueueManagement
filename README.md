@@ -1,6 +1,7 @@
 # VÉLORA — Real-Time Salon Queue Management System
 
-> **THE ART OF ELEVATION** · *BEAUTY · STYLE · YOU*
+> **THE ART OF ELEVATION** · *BEAUTY · STYLE · YOU*  
+> 🌐 **Live Demo (Receptionist Console):** [https://salon-queue-management-three.vercel.app/reception](https://salon-queue-management-three.vercel.app/reception)
 
 A production-grade, real-time salon queue management web application built with **React 18 + Vite + Tailwind CSS**, featuring an editorial **Quiet Luxury** visual design system inspired directly by high-end salon brand aesthetics.
 
